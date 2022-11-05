@@ -9,14 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "@react-google-maps/api": "^2.14.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
+    "deck.gl": "^8.8.17",
+    "dotenv": "^16.0.3",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
+    "google-map-react": "^2.2.0",
+    "mapbox-gl": "^1.13.2",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.6.0",
+    "react-map-gl-geocoder": "^2.2.0",
+    "sass": "^1.56.0",
     "typescript": "4.8.4"
+  },
+  "devDependencies": {
+    "@types/google-map-react": "^2.1.7"
   }
 }
