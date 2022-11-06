@@ -30,6 +30,12 @@ export default function TestMap () {
     center: [lng, lat],
     zoom: zoom
     });
+    map.current.addControl(
+      new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl:mapboxgl
+      })
+    )
   });
 
   useEffect(() => {
@@ -49,8 +55,8 @@ export default function TestMap () {
       console.log(clickedLat, clickedLng)
     })
   })
-  const {data, error} = useSWR(`https://api.openweathermap.org/data/3.0/onecall?lat=${clickedLat}&lon=${clickedLng}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`, fetcher)
-  console.log(data)
+  //const {data, error} = useSWR(`https://api.openweathermap.org/data/3.0/onecall?lat=${clickedLat}&lon=${clickedLng}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`, fetcher)
+  //console.log(data)
   return (
     <div className='mapbox'>
       <div className="sidebar">
