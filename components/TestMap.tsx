@@ -4,8 +4,7 @@ import useSWR from 'swr'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { on } from 'process';
-import { FaDatabase } from 'react-icons/fa';
-
+import WeatherDisplayPanel from './WeatherDisplayPanel'
 //added or statement to stop ts possibly undefined error
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || 'iejreijreij';
 
@@ -18,12 +17,12 @@ const geocoder = new MapboxGeocoder({
 
 
 export default function TestMap () {
+  //setting ref so that map and container don't re-render after initial load
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(30);
   const [lat, setLat] = useState(50);
   const [zoom, setZoom] = useState(1.5);
-  const [weather, setWeather] = useState('')
   
   const fetcher = (...args) => fetch(...args).then(res => res.json())
   //adding  user selected clicked coordinates *this might end up getting lifted up*
@@ -44,7 +43,6 @@ export default function TestMap () {
           (console.log(e.result.geometry.coordinates.at(0)))
           setSearchedLat(e.result.geometry.coordinates.at(0))
           setSearchedLng(e.result.geometry.coordinates.at(1))
-          setWeather(searchedLat, searchedLng)
         })
     )
   });
@@ -54,10 +52,10 @@ export default function TestMap () {
   if (data) console.log(JSON.stringify(data.daily))
   return (
     <div className='mapbox'>
-      <div ref={mapContainer} className='map-container'></div>
-      <div>
+      <div ref={mapContainer} className='map-container'>  <div>
         {data? JSON.stringify(data.daily) : ''}
-      </div>
+      </div></div>
+    
     </div>
   )
 

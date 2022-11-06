@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Header from '../components/header'
+import Header from '../components/Header'
 import {GoogleMap, useLoadScript, Marker} from '@react-google-maps/api'
-import TestMap from '../components/testmap'
+import TestMap from '../components/TestMap'
 export default function Home() {
   
   return (
