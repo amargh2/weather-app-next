@@ -1,26 +1,51 @@
+// Defining values
+//screen sizes
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+//colors
 $Red: rgb(255, 0, 0);
 $Eggplant: rgb(128, 0, 128);
 $Black: rgb(0, 0, 0);
 $Medium: rgb(127, 127, 127);
 $White: rgb(255, 255, 255);
 $Twitterblue: rgb(25, 39, 52);
+
+
 .map-container {
-  width: 50%;
+  width: 100%;
+  @media(max-width:$screen-sm-min) {
+    height: 50vh
+  }
   height: 70vh;
+  border-radius:1rem;
 }
 
 .mapbox {
-  padding:2rem;
- 
-}
-.grid{
+  padding:4rem;
+  @media(max-width:$screen-sm-min) {
+    display:flex;
+    flex-direction:column;
+    padding:none;
+  }
   display:grid;
+  gap:2rem;
+  grid-template-columns:repeat(2, 1fr);
+  grid-template-rows: 1;
+  font-size:x-large;
+}
+
+.displaypanel{
+  background-color:$Medium;
+  padding:2rem;
+  border-radius:2rem;
+  box-shadow:0 0 0 .2rem white
 }
 
 .header {
   display: flex;
   justify-content:center;
-  font-size:x-large;
+  font-size: 3rem;
   font-weight:bolder;
   padding: 2rem;
   box-shadow: 0 0 0 .2rem white;
