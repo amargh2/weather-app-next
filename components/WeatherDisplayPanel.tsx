@@ -14,10 +14,44 @@ export default function WeatherDisplayPanel(props: { data: any; query: string | 
   // while true, daily shows; while false, weekly shows 
   const [daily, setDaily] = useState(true)
   const [date, setDate] = useState(new Date())
-  console.log(props.data)
-  const weatherDisplay = () => {
+  const [dailyWeather, setDailyWeather] = useState()
+  
+  const currentWeather = () => {
     if (props.data) {
       const data = props.data
+      return (
+        <div className='current'>
+            <div><IconPicker weather={data.current.weather[0].description} /></div> 
+
+            <div><FaTemperatureHigh/> {JSON.stringify(data.current.temp)} F</div>
+            <div><WiHumidity/> {JSON.stringify(data.current.humidity)}%</div>
+        </div>
+      )} if (!props.data) {
+        <div>Loading..</div>
+      }
+  }
+
+  const weeklyWeather = () => {
+    if (props.data) {
+      const data = props.data
+      return (
+        <div className='weeklycontainer'>
+          {data.daily.map(day => {
+            return (<div key='key' className='day'>
+                      <div><IconPicker weather={day.weather[0].description}></IconPicker></div>
+                      <div><FaTemperatureHigh size={28}/>{day.temp.max} F</div> 
+                      <div><FaTemperatureLow size={28}/>{day.temp.min} F</div> 
+                    </div>)})}
+          </div>)
+    } if (!props.data) {
+      return (
+        <div>Loading...</div>
+      )
+    }
+  }
+
+  const headingAndButtons = () => {
+    if (props.data) {
       return (
         <div>
           <h3>Weather in {props.query} on {date.toLocaleString()}</h3>
@@ -25,31 +59,21 @@ export default function WeatherDisplayPanel(props: { data: any; query: string | 
               <button onClick={() => setDaily(true)}>Daily</button>
               <button onClick={()=> setDaily(false)}>Weekly</button>
             </div>
-              {daily === true ? <div className='current'>
-                <div><FaTemperatureHigh/> {JSON.stringify(data.current.temp)} F</div>
-                <div><WiHumidity/> {JSON.stringify(data.current.humidity)}%</div>
-                <div><IconPicker weather={data.current.weather[0].description}/></div>
-              </div> : <div className='dayscontainer'>
-                {data.daily.map(day => {
-                  return (<div key='key' className='day'>
-                            <div><IconPicker weather={day.weather[0].description}></IconPicker></div>
-                            <div><FaTemperatureHigh size={28}/>{day.temp.max} F</div> 
-                            <div><FaTemperatureLow size={28}/>{day.temp.min} F</div> 
-                          </div>)
-                })}
-              </div>
-          }
-          </div>
-        
-      )
-    } else {
-      return  <div>No Weather Data</div>
+        </div>
+        )
+    } if (!props.data) {
+      return (<div>Loading...</div>)
     }
+    
   }
+
+
   return (
     
     <div className='displaypanel'>
-      {weatherDisplay()}
+      {headingAndButtons()}
+      <div style={daily ? {visibility:'visible'} : {visibility:'hidden'}}>{currentWeather()}</div>
+      <div style={daily ? {visibility:'hidden'} : {visibility:'visible'}}>{weeklyWeather()}</div>
     </div>
   )
 }

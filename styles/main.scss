@@ -15,6 +15,13 @@ $NavyBlue: rgb(25, 39, 52);
   size:20rem;
 }
 
+.current {
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  padding:2rem;
+}
+
 .map-container {
   width: 100%;
   @media(max-width:$screen-sm-min) {
@@ -53,8 +60,7 @@ $NavyBlue: rgb(25, 39, 52);
   font-size:x-large;
 }
 
-.dayscontainer{
-  padding:1rem;
+.weeklycontainer{
   display:grid;
   grid-template-columns:repeat(4, 1fr);
   gap:2rem;
@@ -75,7 +81,11 @@ $NavyBlue: rgb(25, 39, 52);
   background-color:$Medium;
   padding:2rem;
   border-radius:2rem;
-  box-shadow:0 0 0 .2rem white
+  box-shadow:0 0 0 .2rem white;
+  display:flex;
+  flex-direction:column;
+  grid-template-columns:repeat(3, 1fr);
+  justify-content:center;
 }
 
 .header {
