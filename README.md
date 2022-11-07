@@ -12,7 +12,7 @@ for the JSON weather info. For now fetching is accomplished on the front end wit
 
 ### Basic Usage.
 
-You can see it live at: =>link will go here<=
+You can use it live at https://weather-app-9001.netlify.app/
 
 Pretty simple! Just type any place or semblance of a place into the searchbar
 on the map, and choose one of the options. The weather from the nearest weather station to that point will populate on the righthand panel.
