@@ -73,8 +73,8 @@ export default function WeatherDisplayPanel(props: { data: any; query: string | 
     <div className='displaypanel'>
       {headingAndButtons()}
       
-      <div style={daily ? {visibility:'visible'} : {visibility:'hidden'}}>{currentWeather()}</div>
-      <div style={daily ? {visibility:'hidden'} : {visibility:'visible'}}>{weeklyWeather()}</div>
+      <div style={daily ? {display:'flex'} : {display:'none'}}>{currentWeather()}</div>
+      <div style={daily ? {display:'none'} : {display:'flex'}}>{weeklyWeather()}</div>
     </div>
   )
 }

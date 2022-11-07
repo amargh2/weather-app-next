@@ -65,6 +65,7 @@ $NavyBlue: rgb(25, 39, 52);
   grid-template-columns:repeat(4, 1fr);
   gap:2rem;
   font-size:smaller;
+  padding: 2rem;
   .day{
     display:flex;
     flex-direction:column;
@@ -84,7 +85,6 @@ $NavyBlue: rgb(25, 39, 52);
   display:flex;
   flex-direction:column;
   grid-template-columns:repeat(3, 1fr);
-  justify-content:center;
 }
 
 .header {
