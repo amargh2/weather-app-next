@@ -17,4 +17,4 @@ You can see it live at: =>link will go here<=
 Pretty simple! Just type any place or semblance of a place into the searchbar
 on the map, and choose one of the options. The weather from the nearest weather station to that point will populate on the righthand panel.
 
-![image]('./weatherappscreenshot.png')
+![image]('./public/weatherappscreenshot.png')
