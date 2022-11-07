@@ -19,8 +19,8 @@ const geocoder = new MapboxGeocoder({
 
 export default function TestMap () {
   //setting ref so that map and container don't re-render after initial load
-  const mapContainer = useRef();
-  const map = useRef();
+  const mapContainer = useRef(null);
+  const map:any= useRef(null);
   //setting defaults for map
   const [lng, setLng] = useState(30);
   const [lat, setLat] = useState(50);
@@ -36,7 +36,6 @@ export default function TestMap () {
     style: 'mapbox://styles/mapbox/satellite-streets-v11',
     center: [lng, lat],
     zoom: zoom,
-    projection:'globe'
     });
     map.current.addControl(
       geocoder
