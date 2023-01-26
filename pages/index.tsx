@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
-import TestMap from '../components/TestMap'
+import MapAndPanel from '../components/MapAndPanel'
+import WeatherDisplay from '../components/WeatherDisplay'
 export default function Home() {
   
   return (
@@ -11,7 +12,7 @@ export default function Home() {
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
       </Head>
       <Header/>
-      <TestMap/>
+      <WeatherDisplay/>
     </div>
   )
 }

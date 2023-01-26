@@ -1,8 +1,10 @@
+import Tabs from "./Tabs";
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState } from "react";
 import {FaTemperatureHigh, FaTemperatureLow} from 'react-icons/fa'
 import {WiHumidity} from 'react-icons/wi'
 import IconPicker from "./IconPicker";
 import { CircularProgress } from "@mui/material";
+import WeatherDisplay from "./WeatherDisplay";
 export default function WeatherDisplayPanel(props: { data: any; query: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }) {
   
   //this component takes weather data from the map function
@@ -17,6 +19,7 @@ export default function WeatherDisplayPanel(props: { data: any; query: string | 
   //set state -- daily weather vs weekly weather. daily = true ? shows daily weather, else weekly.
   const [daily, setDaily] = useState(true)
   const [date, setDate] = useState(new Date())
+  const [dailyWeather, setDailyWeather] = useState()
   
   //daily weather display
   const currentWeather = () => {
@@ -62,10 +65,7 @@ export default function WeatherDisplayPanel(props: { data: any; query: string | 
           <div>
             <h3>Weather in {props.query} on {date.toLocaleDateString()}</h3>
           </div>
-            <div className="button-container">
-              <button onClick={() => setDaily(true)}>Daily</button>
-              <button onClick={()=> setDaily(false)}>Weekly</button>
-            </div>
+            <Tabs />
         </div>
         )
     } if (!props.data) {

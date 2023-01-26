@@ -17,7 +17,7 @@ const geocoder = new MapboxGeocoder({
 
 
 
-export default function TestMap () {
+export default function Map () {
   //setting ref so that map and container don't re-render after initial load
   const mapContainer = useRef(null);
   const map:any= useRef(null);
