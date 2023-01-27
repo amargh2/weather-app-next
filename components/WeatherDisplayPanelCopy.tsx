@@ -1,4 +1,4 @@
-import Tabs from "./Tabs";
+import Tabs from "./BasicTabs";
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState } from "react";
 import {FaTemperatureHigh, FaTemperatureLow} from 'react-icons/fa'
 import {WiHumidity} from 'react-icons/wi'

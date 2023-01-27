@@ -17,6 +17,7 @@ export default function WeatherDisplayPanel(props: { data: any; query: string | 
   //set state -- daily weather vs weekly weather. daily = true ? shows daily weather, else weekly.
   const [daily, setDaily] = useState(true)
   const [date, setDate] = useState(new Date())
+  const [dailyWeather, setDailyWeather] = useState()
   
   //daily weather display
   const currentWeather = () => {
