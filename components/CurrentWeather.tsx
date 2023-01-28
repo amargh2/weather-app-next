@@ -16,6 +16,6 @@ export default function CurrentWeather(props) {
       </div>
     )} 
     else {
-      return <div><CircularProgress/></div>
+      return <CircularProgress/>
     }
 }

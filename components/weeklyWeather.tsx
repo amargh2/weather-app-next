@@ -4,7 +4,6 @@ import { CircularProgress } from "@mui/material"
 //weekly weather display
 export default function WeeklyWeather(props){
   //check for data; if data, display; if not, display loading message;
-  console.log(props)
   if (props.daily) {
     const data = props
     return (
