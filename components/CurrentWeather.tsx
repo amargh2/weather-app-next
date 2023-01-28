@@ -1,21 +1,27 @@
 import IconPicker from "./IconPicker"
 import { WiHumidity } from "react-icons/wi"
 import { FaTemperatureHigh } from "react-icons/fa"
-import { CircularProgress } from "@mui/material"
+import { CircularProgress, Grid, Container } from "@mui/material"
 
 export default function CurrentWeather(props) {
-  // data? display. if not, show loading.
-  if (props.current) {
-    const data = props
-    return (
-      <div className='current'>
-          <div className='icon-container'><IconPicker weather={data.current.weather[0].description} /></div> 
-
-          <div><FaTemperatureHigh size={30}/> {JSON.stringify(data.current.temp)} F</div>
-          <div><WiHumidity size={34}/> {JSON.stringify(data.current.humidity)}%</div>
-      </div>
-    )} 
-    else {
-      return <CircularProgress/>
-    }
-}
+    if (props.current) {
+      const currentWeather = props.current
+      return (
+        <Grid container>
+          <Grid item>
+            <IconPicker weather={currentWeather.weather[0].description}/>
+          </Grid>
+          <Grid item>
+            <FaTemperatureHigh size={30}/> {JSON.stringify(currentWeather.temp)}
+          </Grid>
+          <Grid item>
+            <WiHumidity size={34}></WiHumidity> {JSON.stringify(currentWeather.humidity)}
+          </Grid>
+        </Grid>
+      )
+    } else return (
+      <Container>
+        <CircularProgress/>
+      </Container>
+    )
+  }

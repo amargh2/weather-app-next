@@ -55,14 +55,14 @@ export default function Map () {
  
   const {data, error} = useSWR(`https://api.openweathermap.org/data/3.0/onecall?lat=${searchedLat}&lon=${searchedLng}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`, fetcher)
   return (
-      <Grid container spacing={4} rowSpacing={{xs:2, md:1}}>  
+      <Grid container spacing={4} rowSpacing={{sm:2, md:1}}>  
       <Head>
         <title>Weather</title>
         <link></link>
       </Head>  
-        <Grid item ref={mapContainer} sx={{height:"60vh"}} sm={12} lg={6}>
+        <Grid item sm={12} lg={6} ref={mapContainer} sx={{height:'60vh', width:'100%'}}>
         </Grid>
-        <Grid item sm={12} lg={6}>
+        <Grid item sm={12} lg={6} sx={{width:'100%'}}>
           <WeatherDisplay {...data} query={query} {...error}/>
         </Grid>
     </Grid>

@@ -24,7 +24,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -52,7 +52,7 @@ export default function BasicTabs(props) {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <CurrentWeather {...props}/>
+        <CurrentWeather query {...props}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <WeeklyWeather {...props} />

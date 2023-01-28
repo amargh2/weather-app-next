@@ -26,13 +26,16 @@ $NavyBlue: rgb(25, 39, 52);
 }
 
 .map-container {
-  width: 100%;
-  @media(max-width:$screen-sm-min) {
-    height: 50vh
-  }
   height: 70vh;
   border-radius:1rem;
 }
+
+@media(max-width:$screen-sm-min) {
+  .map-container{
+    height: 50vh
+  }
+}
+
 
 .header-buttons {
   div {
