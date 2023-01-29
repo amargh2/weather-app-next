@@ -4,17 +4,16 @@
   grid-column-end: 12;
 }
 
-@media(max-width:450px) { .mapbox-container {
-  display:flex;
-  flex-direction:column;
-  padding:none;
-} }
+
 
 .header {
-  background-color:lightblue;
   display:flex;
 }
 
 body {
   background-color: rgb(241 245 249);
+}
+
+.map-container {
+  border-radius:
 }

@@ -1,11 +1,8 @@
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { json } from 'stream/consumers';
+import {Tabs, Tab, Box} from '@mui/material'
 import CurrentWeather from './CurrentWeather';
 import WeeklyWeather from './weeklyWeather';
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -44,7 +41,7 @@ export default function BasicTabs(props) {
     setValue(newValue);
   };
   return (
-    <Box sx={{ width: '100%', boxShadow:1 }}>
+    <Box sx={{ width: '100%', boxShadow:1, height:{lg:'60vh'}}}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Daily" {...a11yProps(0)} />
@@ -55,7 +52,7 @@ export default function BasicTabs(props) {
         <CurrentWeather query {...props}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <WeeklyWeather {...props} />
+        <WeeklyWeather query {...props} />
       </TabPanel>
     </Box>
   );

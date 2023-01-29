@@ -4,9 +4,17 @@ import useSWR from 'swr'
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { fetcher } from '../utils/fetcher';
 import WeatherDisplay from '../components/WeatherDisplay';
-import { Grid, Container } from '@mui/material';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import { Grid, Box, Container } from '@mui/material';
+import Header from '../components/Header'
 import Head from 'next/head';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
+
+
+//CURRENT ISSUES: grid on the weekly panel needs to be 4 columns per row;
+// - the map, for some reason, is screwy.
+
+
 //added or statement to stop ts possibly undefined error
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || 'iejreijreij';
 
@@ -37,7 +45,7 @@ export default function Map () {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
     container: mapContainer.current,
-    style: 'mapbox://styles/mapbox/satellite-streets-v11',
+    style: 'mapbox://styles/mapbox/satellite-streets-v12',
     center: [lng, lat],
     zoom: zoom,
     });
@@ -55,17 +63,22 @@ export default function Map () {
  
   const {data, error} = useSWR(`https://api.openweathermap.org/data/3.0/onecall?lat=${searchedLat}&lon=${searchedLng}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`, fetcher)
   return (
-      <Grid container spacing={4} rowSpacing={{sm:2, md:1}}>  
-      <Head>
-        <title>Weather</title>
-        <link></link>
-      </Head>  
-        <Grid item sm={12} lg={6} ref={mapContainer} sx={{height:'60vh', width:'100%'}}>
-        </Grid>
-        <Grid item sm={12} lg={6} sx={{width:'100%'}}>
-          <WeatherDisplay {...data} query={query} {...error}/>
-        </Grid>
-    </Grid>
+      <Container>
+        <Grid container spacing={4} rowSpacing={{sm:2, md:1}}>
+        <Head>
+          <title>Weather</title>
+        </Head>
+          <Container>
+            <Box p={2}>
+            </Box>
+          </Container>
+          <Grid item sm={12} lg={6} ref={mapContainer} sx={{height:'60vh', width:'100%'}} className='map-container'>
+          </Grid>
+          <Grid item sm={12} lg={6} sx={{width:'100%'}}>
+            <WeatherDisplay {...data} query={query} {...error}/>
+          </Grid>
+            </Grid>
+      </Container>
   )
 
 };
