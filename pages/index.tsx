@@ -10,11 +10,6 @@ import Head from 'next/head';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
-
-//CURRENT ISSUES: grid on the weekly panel needs to be 4 columns per row;
-// - the map, for some reason, is screwy.
-
-
 //added or statement to stop ts possibly undefined error
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || 'iejreijreij';
 
@@ -63,7 +58,8 @@ export default function Map () {
  
   const {data, error} = useSWR(`https://api.openweathermap.org/data/3.0/onecall?lat=${searchedLat}&lon=${searchedLng}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`, fetcher)
   return (
-      <Container>
+      <Grid container>
+        <Header></Header>
         <Grid container spacing={4} rowSpacing={{sm:2, md:1}}>
         <Head>
           <title>Weather</title>
@@ -78,7 +74,7 @@ export default function Map () {
             <WeatherDisplay {...data} query={query} {...error}/>
           </Grid>
             </Grid>
-      </Container>
+      </Grid>
   )
 
 };
