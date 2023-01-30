@@ -10,7 +10,7 @@ For Weather App 2.0, I wanted to focus on incorporating multiple APIs and servic
 including a map API. I went with Mapbox with the geocoder plugin to get accurate coordinates for the weather api, and used Open Weather Map again
 for the JSON weather info. For now fetching is accomplished on the front end with useSWR and the JS fetch API.
 
-Update: I did this originally with SASS, and while I learned a lot about layout and media queries with SASS, it didn't look great. It looks better now. Thanks MUI.
+Update: I did this originally with SASS, and while I learned a lot about layout and media queries with SASS, I am not a designer (though I'm always trying to get better!). It looks better and has a dark and light mode now. Thanks MUI.
 
 ### Basic Usage.
 
