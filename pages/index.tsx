@@ -5,7 +5,6 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { fetcher } from '../utils/fetcher';
 import WeatherDisplay from '../components/WeatherDisplay';
 import { Grid, Box, Container, IconButton, Switch, AppBar, Toolbar, Typography } from '@mui/material';
-import Header from '../components/Header'
 import Head from 'next/head';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
@@ -49,7 +48,7 @@ export default function App () {
   const mapContainer = useRef(null);
   const map:any= useRef(null);
   
-  const [prefersDark, setDark] = useState(true);
+  const [prefersDark, setDark] = useState(false);
 
   //setting defaults for map
   const [lng, setLng] = useState(30);
@@ -81,7 +80,7 @@ export default function App () {
     )
   });
 
- 
+  //this still needs to be migrated to an api route, but for now it works
   const {data, error} = useSWR(`https://api.openweathermap.org/data/3.0/onecall?lat=${searchedLat}&lon=${searchedLng}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`, fetcher)
   return (
     <ThemeProvider theme={prefersDark ? darkTheme : lightTheme}>

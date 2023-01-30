@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Tabs, Tab, Box} from '@mui/material'
+import {Tabs, Tab, Box, Paper} from '@mui/material'
 import CurrentWeather from './CurrentWeather';
 import WeeklyWeather from './weeklyWeather';
 
@@ -41,7 +41,7 @@ export default function BasicTabs(props) {
     setValue(newValue);
   };
   return (
-    <Box sx={{ width: '100%', boxShadow:1, height:{lg:'60vh'}}}>
+    <Paper sx={{ width: '100%', boxShadow:2, height:{lg:'60vh'}}}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Daily" {...a11yProps(0)} />
@@ -54,6 +54,6 @@ export default function BasicTabs(props) {
       <TabPanel value={value} index={1}>
         <WeeklyWeather query {...props} />
       </TabPanel>
-    </Box>
+    </Paper>
   );
 }

@@ -3,6 +3,7 @@ import { WiHumidity } from "react-icons/wi"
 import { FaTemperatureHigh } from "react-icons/fa"
 import { CircularProgress, Box, Grid, Container, Typography } from "@mui/material"
 
+//shows the weather for current day
 export default function CurrentWeather(props) {
     if (props.current) {
       const currentWeather = props.current
